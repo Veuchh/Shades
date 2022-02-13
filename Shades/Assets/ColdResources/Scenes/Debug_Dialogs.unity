@@ -322,47 +322,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6699087581036878732, guid: dee27b9444f3d524bb48397178b00284, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee27b9444f3d524bb48397178b00284, type: 3}
---- !u!1 &620313537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6699087580922415201, guid: dee27b9444f3d524bb48397178b00284, type: 3}
-  m_PrefabInstance: {fileID: 620313536}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &620313538 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6699087579611500410, guid: dee27b9444f3d524bb48397178b00284, type: 3}
-  m_PrefabInstance: {fileID: 620313536}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &620313539 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6699087581036878732, guid: dee27b9444f3d524bb48397178b00284, type: 3}
-  m_PrefabInstance: {fileID: 620313536}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &620313540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620313537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ba88543e73f9548b38b0abc6f9f3d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dialogPannel: {fileID: 620313539}
-  _dialogBox: {fileID: 620313538}
 --- !u!1 &1157888877
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,8 +334,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1157888879}
   - component: {fileID: 1157888878}
-  - component: {fileID: 1157888881}
   - component: {fileID: 1157888880}
+  - component: {fileID: 1157888881}
   m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
@@ -483,9 +444,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1157888877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e26e09df8cb08fc4a944d89f1a2cb341, type: 3}
+  m_Script: {fileID: 11500000, guid: d46bf62844d7fe54e8722de28fd4958f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dialog: {fileID: 4900000, guid: 60fe6d8d34a72424b9b2b4bef74ae509, type: 3}
 --- !u!1 &1703397348
 GameObject:
   m_ObjectHideFlags: 0
