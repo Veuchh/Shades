@@ -1,0 +1,3 @@
+Helena_Hair_Surprised|H-huh ? Who am I ?|.15|n|
+@Helena_Hair_Happy|I guess we will have some pretty <#FF0000>memorable<#ffffff> moments, huh ?
+@Helena_Hair_Sad|Still, I fear this will have to end sometime.
