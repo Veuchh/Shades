@@ -1,0 +1,2 @@
+Mom_Surprised|Oh. You're still here.
+@Mom_Sad|I guess your father isn't too happy about this. You should hurry.

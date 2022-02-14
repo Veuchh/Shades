@@ -1,0 +1,4 @@
+Dad_Angry|<#00FFFF>HAH !<#ffffff>|.2|n
+@Dad_Angry|So you finally woke up ? It's about time ! You know the king called for you today ! You can't be late !
+@Helena_Hair_Sad|Yeah... I know, sorry dad, I will go soon...|.1
+@Dad_Angry|You better !

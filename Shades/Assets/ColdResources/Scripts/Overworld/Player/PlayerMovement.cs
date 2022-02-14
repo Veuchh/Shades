@@ -120,8 +120,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (_dir == Direction.North || _dir == Direction.South)
         {
-            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(9, 0, 0)) : false;
-            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(-9, 0, 0)) : false;
+            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(8, 0, 0)) : false;
+            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(-8, 0, 0)) : false;
         }
 
         else

@@ -1,20 +1,19 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
-    [SerializeField] SceneAsset _menuScene;
+    [SerializeField] string _menuScene;
 
     public static event Action SceneStartedLoading;
     public static event Action SceneFinishedLoading;
 
     void Start()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(_menuScene.name, LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_menuScene, LoadSceneMode.Single);
     }
 
     private void Awake()

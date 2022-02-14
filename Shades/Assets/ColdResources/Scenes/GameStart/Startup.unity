@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce50b77b6a6c5b44893e8ce778c04f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuScene: {fileID: 102900000, guid: f45a0231bf02c724eae785ef3be270af, type: 3}
+  _menuScene: Helena_Room
 --- !u!114 &1751087205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,23 +491,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8889ff90143e894ea058a86266256ee, type: 3}
---- !u!1 &1865923031 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7162925994374478034, guid: b8889ff90143e894ea058a86266256ee, type: 3}
-  m_PrefabInstance: {fileID: 1865923030}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1865923032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865923031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3fc889a9b11b83499f5dff63675d015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2294251526358945588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,6 +498,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 430139875125092902, guid: b855f5128fb6f2b40b6b792f9ca6216f, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5623661800042416638, guid: b855f5128fb6f2b40b6b792f9ca6216f, type: 3}
       propertyPath: m_Name
       value: FadeToBlackUI

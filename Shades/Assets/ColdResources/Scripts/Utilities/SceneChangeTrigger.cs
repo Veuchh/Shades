@@ -1,10 +1,10 @@
 using System;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneChangeTrigger : MonoBehaviour
 {
-    [SerializeField] SceneAsset _targetScene;
+    [SerializeField] string _targetScene;
     [SerializeField] Vector2 _targetPlayerPos;
 
     public static event Action<string> ChangeToScene;
@@ -14,7 +14,7 @@ public class SceneChangeTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ChangeToScene?.Invoke(_targetScene.name);
+            ChangeToScene?.Invoke(_targetScene);
             ChangePlayerPos?.Invoke(new Vector3(_targetPlayerPos.x, _targetPlayerPos.y, 0));
         }
     }
