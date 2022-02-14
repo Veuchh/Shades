@@ -47,7 +47,6 @@ public class InteractableElement : MonoBehaviour
 
             bool l_skippable = true;
 
-            if (l_parsedData.Length > 3) Debug.Log(l_parsedData[3]);
             if (l_parsedData.Length > 3) l_skippable = l_parsedData[3] == "y";
 
             l_npcDialog.Add(new DialogBoxContent(l_parsedData[1], l_contentImage, l_textDelay, l_skippable));

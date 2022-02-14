@@ -54,7 +54,7 @@ public class PlayerInteraction : MonoBehaviour
                 break;
         }
 
-        foreach (RaycastHit2D l_hit in Physics2D.RaycastAll(transform.position + new Vector3(0, -15, 0), l_InteractDir, _interactionDist, _interactionMask))
+        foreach (RaycastHit2D l_hit in Physics2D.RaycastAll(transform.position, l_InteractDir, _interactionDist, _interactionMask))
         {
             if (l_hit.transform.GetComponent<InteractableElement>())
             {

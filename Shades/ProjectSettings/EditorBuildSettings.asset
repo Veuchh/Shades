@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ColdResources/Scenes/Debug/Debug_Dialogs.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/ColdResources/Scenes/GameStart/Startup.unity
+    guid: 8843a65e2df6c74429fb7b3ea10f0724
+  - enabled: 1
+    path: Assets/ColdResources/Scenes/Castle/Helena_Room.unity
+    guid: f45a0231bf02c724eae785ef3be270af
+  - enabled: 1
+    path: Assets/ColdResources/Scenes/Castle/Home_LivingRoom.unity
+    guid: 52dd61f9a21986c4897a4247529e2806
   m_configObjects: {}

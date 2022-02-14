@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static Vector3 _moveDir;
 
-    float _baseThreshold = 7.5f;
+    float _baseThreshold = 10f;
     float _southThreshold = 4f;
 
     float _speed;
@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     public static event Action<bool, Direction> UpdateGFX;
 
+    [SerializeField] LayerMask _collideWith;
+
     private void Awake()
     {
         _speed = _walkingSpeed;
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         DialogManager.DialogStarted += UnsubscribeMovement;
         DialogManager.DialogEnded += SubscribeMovement;
+        SceneChangeTrigger.ChangePlayerPos += OnRoomChanged;
     }
 
     private void OnDestroy()
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         DialogManager.DialogStarted -= UnsubscribeMovement;
         DialogManager.DialogEnded -= SubscribeMovement;
+        SceneChangeTrigger.ChangePlayerPos -= OnRoomChanged;
     }
 
     void SubscribeMovement()
@@ -88,14 +92,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!CheckForFreeSpace())
+        if (CheckForFreeSpace())
         {
+            transform.position += _moveDir * Time.deltaTime * _speed;
             return;
         }
-        transform.position += _moveDir * Time.deltaTime * _speed;
+        else if (true)
+        {
+
+        }
     }
 
-    
+    void OnRoomChanged(Vector3 p_newPos)
+    {
+        StartCoroutine(ChangePosAfterFadeToBlack(p_newPos));
+    }
+
+    IEnumerator ChangePosAfterFadeToBlack(Vector3 p_newPos)
+    {
+        yield return new WaitForSeconds(.1f);
+        transform.position = p_newPos;
+    }
 
     bool CheckForFreeSpace()
     {
@@ -103,17 +120,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (_dir == Direction.North || _dir == Direction.South)
         {
-            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(5, -15, 0)) : false;
-            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(-5, -15, 0)) : false;
+            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(9, 0, 0)) : false;
+            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(-9, 0, 0)) : false;
         }
 
         else
         {
-            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -10, 0)) : false;
-            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -17.5f, 0)) : false;
+            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, 5, 0)) : false;
+            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -2.5f, 0)) : false;
         }
 
-        l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -15, 0)) : false;
+        l_isSpaceFree = l_isSpaceFree ? CircleCast(Vector3.zero) : false;
 
         return l_isSpaceFree;
     }
@@ -126,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         if (_dir == Direction.South) l_usedThreshold = _southThreshold;
         else l_usedThreshold = _baseThreshold;
 
-        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _moveDir, Time.deltaTime * _speed + l_usedThreshold))
+        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _moveDir, Time.deltaTime * _speed + l_usedThreshold, _collideWith))
         {
             if (item.transform.GetComponent<Collider2D>() && !item.transform.GetComponent<Collider2D>().isTrigger)
             {
