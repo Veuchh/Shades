@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public static Vector3 _moveDir;
 
-    float _threshold = 7.5f;
+    float _baseThreshold = 7.5f;
+    float _southThreshold = 4f;
 
     float _speed;
 
@@ -109,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -10, 0)) : false;
-            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -20, 0)) : false;
+            l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -17.5f, 0)) : false;
         }
 
         l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(0, -15, 0)) : false;
@@ -120,7 +121,12 @@ public class PlayerMovement : MonoBehaviour
     bool CircleCast(Vector3 p_offset)
     {
         bool l_isSpaceFree = true;
-        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _moveDir, Time.deltaTime * _speed + _threshold))
+        float l_usedThreshold;
+
+        if (_dir == Direction.South) l_usedThreshold = _southThreshold;
+        else l_usedThreshold = _baseThreshold;
+
+        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _moveDir, Time.deltaTime * _speed + l_usedThreshold))
         {
             if (item.transform.GetComponent<Collider2D>() && !item.transform.GetComponent<Collider2D>().isTrigger)
             {

@@ -1,0 +1,2 @@
+Helena_Narrator|Your bed. It is so comfy, it is often hard to get out of it.
+@Helena_Narrator|But today, you have to.

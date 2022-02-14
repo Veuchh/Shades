@@ -53,7 +53,7 @@ public class DialogManager : MonoBehaviour
 
     void OnPlayerPressedInteract()
     {
-        if (_contentToDisplay.Count == 0)
+        if (_contentToDisplay.Count == 0 && !_isDialogDisplaying)
         {
             InputHandler.InteractInput -= OnPlayerPressedInteract;
             InputHandler.SkipInput -= OnPlayerPressedSkip;

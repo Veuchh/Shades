@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerGFX : MonoBehaviour
 {
-    Animator _animator;
+    [SerializeField] Animator _animator;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>(); 
         SubscribePlayerAnimations();
     }
 
@@ -53,6 +52,6 @@ public class PlayerGFX : MonoBehaviour
 
         _animator.SetInteger("Dir", l_dir);
 
-        GetComponent<Animator>().SetTrigger("ChangeAnimation");
+        _animator.SetTrigger("ChangeAnimation");
     }
 }
