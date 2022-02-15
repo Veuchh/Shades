@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using UnityEditor;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
-    [SerializeField] string _menuScene;
+    [SerializeField, Scene] int _menuScene;
 
     public static event Action SceneStartedLoading;
     public static event Action SceneFinishedLoading;
@@ -26,21 +27,21 @@ public class SceneManager : MonoBehaviour
         SceneChangeTrigger.ChangeToScene -= ChangeScene;
     }
 
-    void ChangeScene(string p_scene)
+    void ChangeScene(int p_scene)
     {
         StartCoroutine(ChangeRoom(p_scene));
     }
 
-    IEnumerator ChangeRoom(string p_roomName)
+    IEnumerator ChangeRoom(int p_scene)
     {
         SceneStartedLoading?.Invoke();
 
         //wait until screen is Fully black
         yield return new WaitForSeconds(.1f);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(p_roomName, LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(p_scene, LoadSceneMode.Single);
 
-        while (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != p_roomName)
+        while (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex != p_scene)
         {
             yield return null;
         }

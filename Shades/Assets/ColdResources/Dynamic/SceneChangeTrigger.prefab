@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2802883645617743920
 Transform:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2693b3bef26c374996e701140462ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetScene: {fileID: 0}
+  _targetScene: 0
   _targetPlayerPos: {x: 0, y: 0}
 --- !u!50 &-7822446770633508416
 Rigidbody2D:

@@ -1,0 +1,2 @@
+Helena_Narrator|"Did you know you could use the <#FFFF00>SHIFT<#ffffff> button to run ?"
+@Helena_Narrator|"I have no idea what that means. That's just what this guy is saying."

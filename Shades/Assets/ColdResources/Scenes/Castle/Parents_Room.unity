@@ -386,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8359912198360575760, guid: ee596f5cbb92f89449d9f8b8bef3fc4c, type: 3}
       propertyPath: _targetScene
-      value: Home_LivingRoom
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8359912198360575760, guid: ee596f5cbb92f89449d9f8b8bef3fc4c, type: 3}
       propertyPath: _targetPlayerPos.x

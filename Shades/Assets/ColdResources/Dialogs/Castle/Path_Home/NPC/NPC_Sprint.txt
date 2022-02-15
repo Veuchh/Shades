@@ -1,0 +1,2 @@
+NPC_Sprint|Did you know you could use the <#FFFF00>SHIFT<#ffffff> button to run ?
+@NPC_Sprint|I have no idea what that means. That's just what this sign is saying.

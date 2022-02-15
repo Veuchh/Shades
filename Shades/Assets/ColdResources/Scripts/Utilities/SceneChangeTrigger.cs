@@ -1,13 +1,14 @@
+using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChangeTrigger : MonoBehaviour
 {
-    [SerializeField] string _targetScene;
+    [SerializeField, Scene] int _targetScene;
     [SerializeField] Vector2 _targetPlayerPos;
 
-    public static event Action<string> ChangeToScene;
+    public static event Action<int> ChangeToScene;
     public static event Action<Vector3> ChangePlayerPos;
 
     private void OnTriggerEnter2D(Collider2D other)

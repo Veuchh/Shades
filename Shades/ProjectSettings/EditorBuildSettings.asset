@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ColdResources/Scenes/Castle/Parents_Room.unity
     guid: ea4d8df00a8d7044b89efb4f55ddaaae
+  - enabled: 1
+    path: Assets/ColdResources/Scenes/Castle/Path_Home.unity
+    guid: 2dca3a97e7aea8348baf077f49997c45
   m_configObjects: {}
