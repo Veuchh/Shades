@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1293337077686001819
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 7.56
+  threshold:
+    overrideState: 0
+    value: 1
+  softKnee:
+    overrideState: 0
+    value: 0.5
+  clamp:
+    overrideState: 0
+    value: 65472
+  diffusion:
+    overrideState: 0
+    value: 7
+  anamorphicRatio:
+    overrideState: 0
+    value: 0
+  color:
+    overrideState: 0
+    value: {r: 1, g: 1, b: 1, a: 1}
+  fastMode:
+    overrideState: 0
+    value: 0
+  dirtTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  dirtIntensity:
+    overrideState: 0
+    value: 0
 --- !u!114 &-473731686207272341
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -24,8 +71,8 @@ MonoBehaviour:
     value: {fileID: 0}
     defaultState: 1
   tonemapper:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -59,9 +106,9 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.41509432, g: 0.17883591, b: 0.08027767, a: 1}
+    value: {r: 1, g: 0.55045116, b: 0.3537736, a: 1}
   hueShift:
-    overrideState: 0
+    overrideState: 1
     value: 0
   saturation:
     overrideState: 0
@@ -86,7 +133,7 @@ MonoBehaviour:
     value: 0
   mixerGreenOutRedIn:
     overrideState: 0
-    value: 0
+    value: -81
   mixerGreenOutGreenIn:
     overrideState: 0
     value: 100
@@ -94,13 +141,13 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   mixerBlueOutRedIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerBlueOutGreenIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerBlueOutBlueIn:
-    overrideState: 0
+    overrideState: 1
     value: 100
   lift:
     overrideState: 0
@@ -748,7 +795,7 @@ MonoBehaviour:
       - 0.984375
       - 0.9921875
   hueVsHueCurve:
-    overrideState: 0
+    overrideState: 1
     value:
       curve:
         serializedVersion: 2
@@ -889,11 +936,47 @@ MonoBehaviour:
       - 0.5
       - 0.5
   hueVsSatCurve:
-    overrideState: 0
+    overrideState: 1
     value:
       curve:
         serializedVersion: 2
-        m_Curve: []
+        m_Curve:
+        - serializedVersion: 3
+          time: 0.4124294
+          value: 0.49101794
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.4915254
+          value: 1
+          inSlope: 3.4330034
+          outSlope: 3.4330034
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.6073446
+          value: 1
+          inSlope: -0.10598817
+          outSlope: -0.10598817
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.72316384
+          value: 0.47904193
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -901,134 +984,134 @@ MonoBehaviour:
       m_ZeroValue: 0.5
       m_Range: 1
       cachedData:
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
+      - 0.48328578
+      - 0.4834824
+      - 0.4836806
+      - 0.48388022
+      - 0.484081
+      - 0.4842828
+      - 0.48448533
+      - 0.48468843
+      - 0.4848919
+      - 0.4850955
+      - 0.48529905
+      - 0.4855023
+      - 0.48570508
+      - 0.48590714
+      - 0.4861083
+      - 0.48630837
+      - 0.48650712
+      - 0.48670432
+      - 0.48689976
+      - 0.48709327
+      - 0.48728463
+      - 0.4874736
+      - 0.48766002
+      - 0.48784363
+      - 0.48802423
+      - 0.48820165
+      - 0.48837566
+      - 0.488546
+      - 0.48871255
+      - 0.48887506
+      - 0.48903328
+      - 0.48918706
+      - 0.4893362
+      - 0.4894804
+      - 0.48961955
+      - 0.48975337
+      - 0.4898817
+      - 0.49000433
+      - 0.490121
+      - 0.49023154
+      - 0.49033576
+      - 0.4904334
+      - 0.4905243
+      - 0.4906082
+      - 0.49068493
+      - 0.49075425
+      - 0.490816
+      - 0.4908699
+      - 0.49091583
+      - 0.4909535
+      - 0.49098274
+      - 0.49100333
+      - 0.49101508
+      - 0.49154654
+      - 0.50765014
+      - 0.54303145
+      - 0.59337485
+      - 0.6543647
+      - 0.7216854
+      - 0.7910212
+      - 0.85805655
+      - 0.91847587
+      - 0.9679634
+      - 1.0022475
+      - 1.0250524
+      - 1.0415022
+      - 1.0523065
+      - 1.0581748
+      - 1.059817
+      - 1.0579423
+      - 1.0532604
+      - 1.0464811
+      - 1.0383139
+      - 1.0294682
+      - 1.020654
+      - 1.0125805
+      - 1.0059576
+      - 1.0014948
+      - 0.9993176
+      - 0.98847836
+      - 0.96602905
+      - 0.9338657
+      - 0.89388454
+      - 0.8479817
+      - 0.79805315
+      - 0.74599516
+      - 0.6937038
+      - 0.6430751
+      - 0.5960053
+      - 0.55439043
+      - 0.5201267
+      - 0.49511015
+      - 0.481237
+      - 0.4790428
+      - 0.47905132
+      - 0.4790688
+      - 0.47909498
+      - 0.47912967
+      - 0.47917268
+      - 0.4792238
+      - 0.47928277
+      - 0.4793494
+      - 0.47942352
+      - 0.4795049
+      - 0.47959334
+      - 0.47968858
+      - 0.47979048
+      - 0.4798988
+      - 0.48001334
+      - 0.48013386
+      - 0.48026016
+      - 0.48039207
+      - 0.48052934
+      - 0.4806718
+      - 0.48081917
+      - 0.4809713
+      - 0.481128
+      - 0.481289
+      - 0.4814541
+      - 0.48162314
+      - 0.48179588
+      - 0.4819721
+      - 0.4821516
+      - 0.48233417
+      - 0.4825196
+      - 0.48270768
+      - 0.48289824
+      - 0.483091
   satVsSatCurve:
     overrideState: 0
     value:
@@ -1325,3 +1408,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -473731686207272341}
+  - {fileID: -1293337077686001819}

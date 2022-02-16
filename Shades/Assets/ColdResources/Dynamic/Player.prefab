@@ -53,7 +53,7 @@ MonoBehaviour:
   _dir: 2
   _collideWith:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 887
 --- !u!114 &7162925994374478038
 MonoBehaviour:
   m_ObjectHideFlags: 0
