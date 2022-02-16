@@ -645,18 +645,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 276097973425984150, guid: 86dadbc92035a1f4489e00948271d76b, type: 3}
-      propertyPath: m_AssetsPPU
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 276097973425984150, guid: 86dadbc92035a1f4489e00948271d76b, type: 3}
-      propertyPath: m_RefResolutionX
-      value: 768
-      objectReference: {fileID: 0}
-    - target: {fileID: 276097973425984150, guid: 86dadbc92035a1f4489e00948271d76b, type: 3}
-      propertyPath: m_RefResolutionY
-      value: 768
-      objectReference: {fileID: 0}
     - target: {fileID: 276097973425984151, guid: 86dadbc92035a1f4489e00948271d76b, type: 3}
       propertyPath: orthographic size
       value: 128.14067
@@ -673,6 +661,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7592092727758817472, guid: 86dadbc92035a1f4489e00948271d76b, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a244d578f6b32a4f8acf3c8a1f87e8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86dadbc92035a1f4489e00948271d76b, type: 3}
 --- !u!1 &646324869
