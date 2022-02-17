@@ -4,19 +4,20 @@ using System.Globalization;
 using UnityEngine;
 using NaughtyAttributes;
 
+
 public class InteractableElement : MonoBehaviour
 {
-    public static event Action<List<DialogBoxContent>> TextInteractionCallback;
+    public static event Action<List<DialogBoxContent>, Action<int>> TextInteractionCallback;
 
     [SerializeField] bool _hasTextInteraction;
 
-    [SerializeField] [ShowIf("_hasTextInteraction")] List<TextAsset> Dialogs;
+    [SerializeField] [ShowIf("_hasTextInteraction")] List<DialogNode> Dialogs;
 
     int _interactCount = 0;
 
     public virtual void OnInteracted()
     {
-        if (_hasTextInteraction)
+        if (_hasTextInteraction && Dialogs.Count > 0)
         {
             TextInteraction();
         }
@@ -29,7 +30,14 @@ public class InteractableElement : MonoBehaviour
         if (Dialogs.Count <= _interactCount) l_dialogIndex = Dialogs.Count - 1;
         else l_dialogIndex = _interactCount;
 
-        string[] l_lines = Dialogs[l_dialogIndex].ToString().Split('@');
+        StartTextInteraction(DataHandling(Dialogs[l_dialogIndex]));
+
+        _interactCount++;
+    }
+
+    List<DialogBoxContent> DataHandling(DialogNode p_data)
+    {
+        string[] l_lines = p_data.Data.ToString().Split('@');
 
         List<DialogBoxContent> l_npcDialog = new List<DialogBoxContent>();
 
@@ -49,16 +57,43 @@ public class InteractableElement : MonoBehaviour
 
             if (l_parsedData.Length > 3) l_skippable = l_parsedData[3] == "y";
 
-            l_npcDialog.Add(new DialogBoxContent(l_parsedData[1], l_contentImage, l_textDelay, l_skippable));
+            bool l_choice = false;
+
+            if (l_parsedData.Length > 4) l_choice = l_parsedData[4] == "choose";
+
+            string l_choice0 = "yes";
+            string l_choice1 = "no";
+
+            if (l_choice && l_parsedData.Length > 6)
+            {
+                l_choice0 = l_parsedData[5];
+                l_choice1 = l_parsedData[6];
+            }
+
+            l_npcDialog.Add(new DialogBoxContent(l_parsedData[1], l_contentImage, l_textDelay, l_skippable, l_choice, l_choice0, l_choice1));
         }
 
-        StartTextInteraction(l_npcDialog);
+        return l_npcDialog;
+    }
 
-        _interactCount++;
+    public void OnChoice(int p_choice)
+    {
+        int l_dialogIndex;
+        if (Dialogs.Count <= _interactCount) l_dialogIndex = Dialogs.Count - 1;
+        else if (Dialogs.Count == 1) l_dialogIndex = 0;
+        else l_dialogIndex = _interactCount--;
+
+       DialogNode l_dialogNode = null;
+
+        if (p_choice == 0) l_dialogNode = Dialogs[l_dialogIndex].Node1;
+
+        else if (p_choice == 1) l_dialogNode = Dialogs[l_dialogIndex].Node2;
+
+        StartTextInteraction(DataHandling(l_dialogNode));
     }
 
     public virtual void StartTextInteraction(List<DialogBoxContent> p_content)
     {
-        TextInteractionCallback?.Invoke(p_content);
+        TextInteractionCallback?.Invoke(p_content, OnChoice);
     }
 }

@@ -1,2 +1,1 @@
-Helena_narrator|Your journal is on the desk. Several pages are ripped.
-@Helena_Narrator|You don't feel like reading it.
+Helena_narrator|Your journal is on the desk. Several pages are ripped.|.03|y|choose|Read it|Do not

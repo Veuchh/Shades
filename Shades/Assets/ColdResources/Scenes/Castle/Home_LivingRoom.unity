@@ -2913,7 +2913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8359912198360575760, guid: ee596f5cbb92f89449d9f8b8bef3fc4c, type: 3}
       propertyPath: _targetPlayerPos.y
-      value: -54
+      value: -80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee596f5cbb92f89449d9f8b8bef3fc4c, type: 3}
