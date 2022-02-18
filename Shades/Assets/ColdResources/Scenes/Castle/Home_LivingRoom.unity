@@ -1308,7 +1308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936208839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.9, y: 65.4, z: 0}
+  m_LocalPosition: {x: 70, y: 65.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 590837060}
@@ -1329,7 +1329,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
   Dialogs:
-  - {fileID: 4900000, guid: 405f7b46b8a67f74ba4ffe2b3ac91004, type: 3}
+  - {fileID: 11400000, guid: 8194a7f7ea077e3439611aa29c66df71, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!61 &936208842
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2801,8 +2803,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
   Dialogs:
-  - {fileID: 4900000, guid: 5b3de244ffee5b148820c520db13e210, type: 3}
-  - {fileID: 4900000, guid: af4ee622a058d854aaa7f67d35509511, type: 3}
+  - {fileID: 11400000, guid: db00fa816808bf14f8928b47faca4df3, type: 2}
+  - {fileID: 11400000, guid: e92efa3f7eb4d7d4282d78d56ef4ad73, type: 2}
+  _saveInteractions: 1
+  _variableName: Dad1Interaction
 --- !u!61 &2074104721
 BoxCollider2D:
   m_ObjectHideFlags: 0

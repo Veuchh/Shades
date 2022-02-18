@@ -15,6 +15,26 @@ public class InteractableElement : MonoBehaviour
 
     int _interactCount = 0;
 
+    [SerializeField]
+    bool _saveInteractions = false;
+
+    [ShowIf("_saveInteractions")]
+    [SerializeField]
+    string _variableName;
+
+    private void Start()
+    {
+        if (_saveInteractions)
+        {
+            _interactCount = (int)SaveManager.Instance.Data.GetType().GetField(_variableName).GetValue(SaveManager.Instance.Data);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_saveInteractions) SaveManager.Instance.Data.GetType().GetField(_variableName).SetValue(SaveManager.Instance.Data, _interactCount);
+    }
+
     public virtual void OnInteracted()
     {
         if (_hasTextInteraction && Dialogs.Count > 0)
@@ -30,7 +50,7 @@ public class InteractableElement : MonoBehaviour
         if (Dialogs.Count <= _interactCount) l_dialogIndex = Dialogs.Count - 1;
         else l_dialogIndex = _interactCount;
 
-        StartTextInteraction(DataHandling(Dialogs[l_dialogIndex]));
+        AttachCallbackToContent(DataHandling(Dialogs[l_dialogIndex]));
 
         _interactCount++;
     }
@@ -76,7 +96,8 @@ public class InteractableElement : MonoBehaviour
         return l_npcDialog;
     }
 
-    public void OnChoice(int p_choice)
+
+    public virtual void OnChoice(int p_choice)
     {
         int l_dialogIndex;
         if (Dialogs.Count <= _interactCount) l_dialogIndex = Dialogs.Count - 1;
@@ -89,11 +110,16 @@ public class InteractableElement : MonoBehaviour
 
         else if (p_choice == 1) l_dialogNode = Dialogs[l_dialogIndex].Node2;
 
-        StartTextInteraction(DataHandling(l_dialogNode));
+        if (l_dialogNode) AttachCallbackToContent(DataHandling(l_dialogNode));
     }
 
-    public virtual void StartTextInteraction(List<DialogBoxContent> p_content)
+    public virtual void AttachCallbackToContent(List<DialogBoxContent> p_content)
     {
-        TextInteractionCallback?.Invoke(p_content, OnChoice);
+        StartTextInteraction(p_content, OnChoice);
+    }
+
+    public virtual void StartTextInteraction(List<DialogBoxContent> p_content, Action<int> p_callback)
+    {
+        TextInteractionCallback?.Invoke(p_content, p_callback);
     }
 }

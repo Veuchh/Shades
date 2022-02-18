@@ -251,8 +251,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
   Dialogs:
-  - {fileID: 4900000, guid: 7a59093b081522b458c96bd4efe0ed16, type: 3}
-  - {fileID: 4900000, guid: 95bd71cc90e70a0478318171bd0fe1b1, type: 3}
+  - {fileID: 11400000, guid: 422ff7947c0c9974c88cc75b7d2d1e4f, type: 2}
+  - {fileID: 11400000, guid: d8ff28acec133f244a6aeac45a319662, type: 2}
+  _saveInteractions: 1
+  _variableName: Mom1Interaction
 --- !u!61 &486335037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2496,7 +2498,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
   Dialogs:
-  - {fileID: 4900000, guid: 6e27d679dc310054e999ebafa818ddac, type: 3}
+  - {fileID: 11400000, guid: 22825a97828cf4846a42c3b2fd72d022, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!4 &945018126
 Transform:
   m_ObjectHideFlags: 0
@@ -2544,7 +2548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
   Dialogs:
-  - {fileID: 4900000, guid: 248b549fa8d78964e978f7fa5dde8301, type: 3}
+  - {fileID: 11400000, guid: e1e05df10266f2e408a6f60c7334b125, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!61 &1067877613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3289,7 +3295,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
   Dialogs:
-  - {fileID: 4900000, guid: 66dfa244e85578845a080ae762fefd10, type: 3}
+  - {fileID: 11400000, guid: 8a2312142acd0ce48bb07607872d2aae, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!4 &1686508663
 Transform:
   m_ObjectHideFlags: 0

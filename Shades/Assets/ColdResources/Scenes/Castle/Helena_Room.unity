@@ -156,6 +156,8 @@ MonoBehaviour:
   _hasTextInteraction: 1
   Dialogs:
   - {fileID: 11400000, guid: ca85e7d7191baa04aaf3d7c76bb052ff, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!61 &6595257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -303,6 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 282717727}
   - component: {fileID: 282717728}
+  - component: {fileID: 282717729}
   m_Layer: 9
   m_Name: SavePoint
   m_TagString: Untagged
@@ -351,6 +354,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 34.44, y: 19.53405}
   m_EdgeRadius: 0
+--- !u!114 &282717729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282717726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e15c4da94d1c4b48b8bb78ad0b10fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hasTextInteraction: 1
+  Dialogs:
+  - {fileID: 11400000, guid: b70a195ef4b3c1940941bce612c77e03, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!1 &302395642
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +697,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
-  Dialogs: []
+  Dialogs:
+  - {fileID: 11400000, guid: a5c7ffe8683d0764badb944959f0442f, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!61 &1058206972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -807,7 +830,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
-  Dialogs: []
+  Dialogs:
+  - {fileID: 11400000, guid: e55a0e9c5a158424e923d38cabca0b5b, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!61 &1136485363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -906,7 +932,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
-  Dialogs: []
+  Dialogs:
+  - {fileID: 11400000, guid: c66a119b0d573c444aebebc25be267fa, type: 2}
+  _saveInteractions: 0
+  _variableName: 
 --- !u!4 &1165520654
 Transform:
   m_ObjectHideFlags: 0
@@ -8182,6 +8211,7 @@ GameObject:
   - component: {fileID: 1967378620}
   - component: {fileID: 1967378622}
   - component: {fileID: 1967378621}
+  - component: {fileID: 1967378623}
   m_Layer: 9
   m_Name: SavePointGFX
   m_TagString: Untagged
@@ -8275,6 +8305,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1967378623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967378619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0589c2a8538c6a4795bbfcac913d9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8423074184192035652
 PrefabInstance:
   m_ObjectHideFlags: 0

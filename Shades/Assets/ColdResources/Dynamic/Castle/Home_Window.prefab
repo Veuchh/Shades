@@ -169,4 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hasTextInteraction: 1
   Dialogs:
-  - {fileID: 4900000, guid: 37de391c0bef81342b3c0b6d1de8346a, type: 3}
+  - {fileID: 11400000, guid: 7ce52f5e250a15547b87caaea21045e4, type: 2}
+  _saveInteractions: 0
+  _variableName: 

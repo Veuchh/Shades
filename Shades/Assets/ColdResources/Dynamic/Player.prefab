@@ -112,7 +112,7 @@ MonoBehaviour:
   _interactionDist: 20
   _interactionMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
 --- !u!114 &7162925994374478033
 MonoBehaviour:
   m_ObjectHideFlags: 0
