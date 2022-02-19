@@ -56,13 +56,23 @@ public class PlayerInteraction : MonoBehaviour
 
         foreach (RaycastHit2D l_hit in Physics2D.RaycastAll(transform.position, l_InteractDir, _interactionDist, _interactionMask))
         {
-            if (l_hit.transform.GetComponent<InteractableElement>())
+            if (l_hit.transform.GetComponent<NPC>())
+            {
+                NPCInteract(l_hit.transform.GetComponent<NPC>());
+                return;
+            }
+                else if (l_hit.transform.GetComponent<InteractableElement>())
             {
                 Interact(l_hit.transform.GetComponent<InteractableElement>());
-                return; ;
+                return;
             }
         }
         Debug.Log("Nothing here");
+    }
+
+    void NPCInteract(NPC p_NPC)
+    {
+        p_NPC.OnInteracted(_playerMovement._dir);
     }
 
     void Interact(InteractableElement p_element)

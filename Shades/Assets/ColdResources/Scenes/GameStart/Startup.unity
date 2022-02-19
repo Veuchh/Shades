@@ -377,6 +377,7 @@ MonoBehaviour:
     Craziness: 0
     characterName: 
     Dad1Interaction: 0
+    Mom1Interaction: 0
 --- !u!1001 &1865923030
 PrefabInstance:
   m_ObjectHideFlags: 0

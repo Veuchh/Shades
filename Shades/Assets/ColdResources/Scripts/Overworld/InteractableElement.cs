@@ -9,7 +9,7 @@ public class InteractableElement : MonoBehaviour
 {
     public static event Action<List<DialogBoxContent>, Action<int>> TextInteractionCallback;
 
-    [SerializeField] bool _hasTextInteraction;
+    public bool _hasTextInteraction;
 
     [SerializeField] [ShowIf("_hasTextInteraction")] List<DialogNode> Dialogs;
 

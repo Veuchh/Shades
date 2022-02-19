@@ -2432,7 +2432,7 @@ Transform:
   m_GameObject: {fileID: 1214873710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16, y: 30, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2074104722}
   m_RootOrder: 0
@@ -2490,8 +2490,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.47138664, g: 0.76503205, b: 0.9339623, a: 1}
+  m_Sprite: {fileID: -8974031326446597707, guid: 4d2b219e930767149819b23384ed759d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2807,6 +2807,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e92efa3f7eb4d7d4282d78d56ef4ad73, type: 2}
   _saveInteractions: 1
   _variableName: Dad1Interaction
+  _NPCImage: {fileID: 1214873713}
+  _northSprite: {fileID: 6631156544798897664, guid: 4d2b219e930767149819b23384ed759d, type: 3}
+  _southSprite: {fileID: -8974031326446597707, guid: 4d2b219e930767149819b23384ed759d, type: 3}
+  _westSprite: {fileID: 1471780794149518486, guid: 4d2b219e930767149819b23384ed759d, type: 3}
+  _eastSprite: {fileID: -7285119472769311745, guid: 4d2b219e930767149819b23384ed759d, type: 3}
 --- !u!61 &2074104721
 BoxCollider2D:
   m_ObjectHideFlags: 0
