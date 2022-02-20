@@ -255,6 +255,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8ff28acec133f244a6aeac45a319662, type: 2}
   _saveInteractions: 1
   _variableName: Mom1Interaction
+  _NPCImage: {fileID: 568450770}
+  _northSprite: {fileID: -3065351782317292760, guid: bd44de1dd838fca4bb83663bb7751790, type: 3}
+  _southSprite: {fileID: 4607425265858346404, guid: bd44de1dd838fca4bb83663bb7751790, type: 3}
+  _westSprite: {fileID: -5427983510901208592, guid: bd44de1dd838fca4bb83663bb7751790, type: 3}
+  _eastSprite: {fileID: -7863978199710615055, guid: bd44de1dd838fca4bb83663bb7751790, type: 3}
 --- !u!61 &486335037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -268,7 +273,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -6.000037}
+  m_Offset: {x: 0, y: 6.94}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -289,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486335035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44, y: -37, z: 0}
+  m_LocalPosition: {x: -53.1, y: -55.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 568450768}
@@ -496,7 +501,7 @@ Transform:
   m_GameObject: {fileID: 568450767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16, y: 30, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486335038}
   m_RootOrder: 0
@@ -554,8 +559,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8867924, g: 0.17150229, b: 0.38205862, a: 1}
+  m_Sprite: {fileID: 4607425265858346404, guid: bd44de1dd838fca4bb83663bb7751790, type: 3}
+  m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
