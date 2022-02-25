@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0788d0ea9b421b543a8123e6c45157b2, type: 3}
+  m_Name: Monster_Debug
+  m_EditorClassIdentifier: 
+  Name: 
+  Sprite: {fileID: 0}
+  MaxHP: 0
+  MaxFeelings: 0
+  PossiblesStateOfMind: 
+  Happy1: []
+  Happy2: []
+  Happy3: []
+  Sad1: []
+  Sad2: []
+  Sad3: []
+  Angry1: []
+  Angry2: []
+  Angry3: []
+  Afraid1: []
+  Afraid2: []
+  Afraid3: []
