@@ -1,0 +1,12 @@
+Bitter|I'm bitter.
+@Sad|I'm sad.
+@Devastated|I'm Devastated.
+@Merry|I'm Merry.
+@Happy|I'm Happy.
+@Extatic|I'm Extatic.
+@Worried|I'm Worried.
+@Afraid|I'm Afraid.
+@Terrorised|I'm Terrorised.
+@Annoyed|I'm Annoyed.
+@Angry|I'm Angry.
+@Outraged|I'm Outraged.

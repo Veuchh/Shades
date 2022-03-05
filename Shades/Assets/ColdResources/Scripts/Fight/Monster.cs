@@ -26,5 +26,5 @@ public enum StateOfMind
     Worried, Afraid, Terrorised,
     Anxious, Disgusted, Frenetic,
     Annoyed, Angry, Outraged,
-    Dissatisfied, Dismayed, Frustrayted,
+    Dissatisfied, Dismayed, Frustrated,
 }

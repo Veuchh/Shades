@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6b4885b52e31846ab083497b0b3afb, type: 3}
   m_Name: Spell_MeanWord
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Mean Word
+  HealthDamage: {x: 1, y: 3}
   HapinessPoints: 0
-  SadnessPoints: 0
-  AngerPoints: 0
+  SadnessPoints: 2
+  AngerPoints: 5
   FearPoints: 0
