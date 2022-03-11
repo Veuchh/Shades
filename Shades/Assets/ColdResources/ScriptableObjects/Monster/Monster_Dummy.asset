@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0788d0ea9b421b543a8123e6c45157b2, type: 3}
-  m_Name: Monster_Debug
+  m_Name: Monster_Dummy
   m_EditorClassIdentifier: 
-  Name: Debugger Monster
-  Sprite: {fileID: 21300000, guid: d377b0eaeef8c894bae358ad5448d570, type: 3}
-  MaxHP: 10
-  MaxFeelings: 0
-  PossiblesStateOfMind: 0000000007000000
+  Name: Dummy
+  Sprite: {fileID: 21300000, guid: 33a1a932fb947df4b810830454cbbb7e, type: 3}
   ContextReaction: {fileID: 4900000, guid: 52d6cc54bfe194a43a7451584e2c4d53, type: 3}
+  MaxHP: 99999
+  MovementType: 0
+  PossiblesStateOfMind: 17000000
+  Attacks: []

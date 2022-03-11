@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ColdResources/Scenes/Castle/Path_Home.unity
     guid: 2dca3a97e7aea8348baf077f49997c45
+  - enabled: 1
+    path: Assets/ColdResources/Scenes/Debug/Debug_Fight.unity
+    guid: 0e5a2912a88956d468e85ddf30087be5
   m_configObjects: {}

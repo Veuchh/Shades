@@ -30,28 +30,28 @@ public class PlayerGFX : MonoBehaviour
     {
         _animator.SetBool("Moving", p_isMoving);
 
-        int l_dir = 0;
-
+        
         switch (p_dir)
         {
             case Direction.North:
-                l_dir = 2;
+                _animator.SetFloat("XMovement", 0);
+                _animator.SetFloat("YMovement", 1);
                 break;
             case Direction.East:
-                l_dir = 3;
+                _animator.SetFloat("XMovement", 1);
+                _animator.SetFloat("YMovement", 0);
                 break;
             case Direction.South:
-                l_dir = 0;
+                _animator.SetFloat("XMovement", 0);
+                _animator.SetFloat("YMovement", -1);
                 break;
             case Direction.West:
-                l_dir = 1;
+                _animator.SetFloat("XMovement", -1);
+                _animator.SetFloat("YMovement", 0);
                 break;
             default:
                 break;
         }
-
-        _animator.SetInteger("Dir", l_dir);
-
-        _animator.SetTrigger("ChangeAnimation");
+        
     }
 }
