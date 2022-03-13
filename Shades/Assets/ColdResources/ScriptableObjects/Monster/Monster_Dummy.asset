@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Dummy
   Sprite: {fileID: 21300000, guid: 33a1a932fb947df4b810830454cbbb7e, type: 3}
   ContextReaction: {fileID: 4900000, guid: 52d6cc54bfe194a43a7451584e2c4d53, type: 3}
-  MaxHP: 99999
+  MaxHP: 5
   MovementType: 0
   PossiblesStateOfMind: 17000000
   Attacks: []

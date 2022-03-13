@@ -4,64 +4,57 @@ using UnityEngine;
 
 public class PlayerGFX : MonoBehaviour
 {
+    PlayerState _state;
     [SerializeField] Animator _animator;
-    string _lastAnim = HELENA_IDLE_SOUTH;
+    string _lastAnim;
 
     #region AnimNames
-    const string HELENA_IDLE_NORTH = "Helena_Idle_North";
-    const string HELENA_IDLE_SOUTH = "Helena_Idle_South";
-    const string HELENA_IDLE_EAST = "Helena_Idle_East";
-    const string HELENA_IDLE_WEST = "Helena_Idle_West";
+    const string HELENA_IDLE = "Helena_Idle";
 
-    const string HELENA_WALK_NORTH = "Helena_Walk_North";
-    const string HELENA_WALK_SOUTH = "Helena_Walk_South";
-    const string HELENA_WALK_EAST = "Helena_Walk_East";
-    const string HELENA_WALK_WEST = "Helena_Walk_West";
+    const string HELENA_WALK = "Helena_Walk";
+
+    const string HELENA_ATTACK = "Helena_Attack";
     #endregion
 
     private void Awake()
     {
-        SubscribePlayerAnimations();
+        _state = GetComponent<PlayerState>();
     }
 
-    private void OnDestroy()
+    private void Update()
     {
-        UnsubscribePlayerAnimations();
+        if (!_state.Attacking)
+        {
+            PlayerOrientation();
+        }
+        else PlayDirectionalAnimation(HELENA_ATTACK);
     }
 
-    void SubscribePlayerAnimations()
+    void PlayerOrientation()
     {
-        PlayerMovement.UpdateGFX += PlayerOrientation;
+        if (_state.Moving) PlayDirectionalAnimation(HELENA_WALK);
+        else PlayDirectionalAnimation(HELENA_IDLE);
     }
 
-    void UnsubscribePlayerAnimations()
+    void PlayDirectionalAnimation(string p_anim, bool p_checkPlaying = true)
     {
-        PlayerMovement.UpdateGFX -= PlayerOrientation;
-    }
-
-    void PlayerOrientation(bool p_isMoving, Direction p_dir)
-    {
-        _animator.SetBool("Moving", p_isMoving);
-
-        switch (p_dir)
+        switch (_state.Dir)
         {
             case Direction.North:
-                if (p_isMoving) PlayAnimation(HELENA_WALK_NORTH);
-                else PlayAnimation(HELENA_IDLE_NORTH);
-                    break;
+                p_anim += "_North";
+                break;
             case Direction.East:
-                if (p_isMoving) PlayAnimation(HELENA_WALK_EAST);
-                else PlayAnimation(HELENA_IDLE_EAST);
+                p_anim += "_East";
                 break;
             case Direction.South:
-                if (p_isMoving) PlayAnimation(HELENA_WALK_SOUTH);
-                else PlayAnimation(HELENA_IDLE_SOUTH);
+                p_anim += "_South";
                 break;
             case Direction.West:
-                if (p_isMoving) PlayAnimation(HELENA_WALK_WEST);
-                else PlayAnimation(HELENA_IDLE_WEST);
+                p_anim += "_West";
                 break;
         }
+
+        PlayAnimation(p_anim, p_checkPlaying);
     }
 
     void PlayAnimation(string p_anim, bool p_checkPlaying = true)

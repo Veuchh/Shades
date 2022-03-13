@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    PlayerMovement _playerMovement;
+    PlayerState _state;
     [SerializeField] float _interactionDist = 1f;
     [SerializeField] LayerMask _interactionMask;
     void Awake()
     {
-        _playerMovement = GetComponent<PlayerMovement>();
+        _state = GetComponent<PlayerState>();
         SubscribeInteraction();
 
         DialogManager.DialogStarted += UnsubscribeInteraction;
@@ -38,7 +38,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         Vector2 l_InteractDir = new Vector2();
 
-        switch (_playerMovement._dir)
+        switch (_state.Dir)
         {
             case Direction.North:
                 l_InteractDir = Vector2.up;
@@ -72,7 +72,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void NPCInteract(NPC p_NPC)
     {
-        p_NPC.OnInteracted(_playerMovement._dir);
+        p_NPC.OnInteracted(_state.Dir);
     }
 
     void Interact(InteractableElement p_element)

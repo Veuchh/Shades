@@ -302,6 +302,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 955351774, guid: b8889ff90143e894ea058a86266256ee, type: 3}
+      propertyPath: _queueTimingProportion
+      value: 0.307
+      objectReference: {fileID: 0}
     - target: {fileID: 7162925994374478034, guid: b8889ff90143e894ea058a86266256ee, type: 3}
       propertyPath: m_Name
       value: Player

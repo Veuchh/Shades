@@ -9,9 +9,14 @@ public class Dummy : MonsterLogic
         Init();
     }
 
-    private void OnTriggerEnter(Collider p_col)
+    protected override void Init()
     {
-        if (p_col.CompareTag("PlayerAttack")) PhysicalHit(1);
+        base.Init();
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D p_col)
+    {
+        base.PhysicalHit(1);
     }
 
     protected override void Attack(GameObject p_attack, Transform p_target)
@@ -26,7 +31,7 @@ public class Dummy : MonsterLogic
 
     protected override void Killed()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void Movement()

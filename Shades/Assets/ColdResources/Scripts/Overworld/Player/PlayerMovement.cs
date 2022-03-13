@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    PlayerState _state;
     public static Vector3 _moveDir;
 
     float _baseThreshold = 10f;
@@ -16,16 +14,12 @@ public class PlayerMovement : MonoBehaviour
     float _walkingSpeed = 50f;
     float _runningSpeed = 100f;
 
-    public Direction _dir;
-
-    public static event Action<bool, Direction> UpdateGFX;
-
     [SerializeField] LayerMask _collideWith;
 
     private void Awake()
     {
+        _state = GetComponent<PlayerState>();
         _speed = _walkingSpeed;
-        _dir = Direction.South;
         SubscribeMovement();
 
         DialogManager.DialogStarted += UnsubscribeMovement;
@@ -52,8 +46,6 @@ public class PlayerMovement : MonoBehaviour
     {
         InputHandler.MoveInput -= Move;
         InputHandler.SprintInput -= Sprint;
-
-        UpdateGFX?.Invoke(false, _dir);
     }
 
     void Sprint(bool p_sprinting)
@@ -64,8 +56,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(Vector2 p_inputDir)
     {
-        bool l_moving = true;
-
         _moveDir = p_inputDir;
 
         if (p_inputDir.sqrMagnitude > 0)
@@ -73,33 +63,26 @@ public class PlayerMovement : MonoBehaviour
             //checks if going sideways
             if (Mathf.Abs(_moveDir.y) < .5f)
             {
-                if (_moveDir.x > 0) _dir = Direction.East;
-                else _dir = Direction.West;
+                if (_moveDir.x > 0) _state.Dir = Direction.East;
+                else _state.Dir = Direction.West;
             }
 
             else
             {
-                if (_moveDir.y > 0) _dir = Direction.North;
-                else _dir = Direction.South;
+                if (_moveDir.y > 0) _state.Dir = Direction.North;
+                else _state.Dir = Direction.South;
             }
+            _state.Moving = true;
         }
-
-        else l_moving = false;
-
-        UpdateGFX?.Invoke(l_moving, _dir);
-
+        else _state.Moving = false;
     }
 
     void Update()
     {
-        if (CheckForFreeSpace())
+        if (CheckForFreeSpace() && !_state.Attacking)
         {
             transform.position += _moveDir * Time.deltaTime * _speed;
             return;
-        }
-        else if (true)
-        {
-
         }
     }
 
@@ -118,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool l_isSpaceFree = true;
 
-        if (_dir == Direction.North || _dir == Direction.South)
+        if (_state.Dir == Direction.North || _state.Dir == Direction.South)
         {
             l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(8, 0, 0)) : false;
             l_isSpaceFree = l_isSpaceFree ? CircleCast(new Vector3(-8, 0, 0)) : false;
@@ -140,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         bool l_isSpaceFree = true;
         float l_usedThreshold;
 
-        if (_dir == Direction.South) l_usedThreshold = _southThreshold;
+        if (_state.Dir == Direction.South) l_usedThreshold = _southThreshold;
         else l_usedThreshold = _baseThreshold;
 
         foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _moveDir, Time.deltaTime * _speed + l_usedThreshold, _collideWith))
