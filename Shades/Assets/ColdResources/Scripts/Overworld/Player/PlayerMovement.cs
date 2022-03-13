@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     PlayerState _state;
-    public static Vector3 _moveDir;
 
     float _baseThreshold = 10f;
     float _southThreshold = 4f;
@@ -56,20 +55,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(Vector2 p_inputDir)
     {
-        _moveDir = p_inputDir;
+        _state.MoveDir = p_inputDir;
 
-        if (p_inputDir.sqrMagnitude > 0)
+        if (p_inputDir.sqrMagnitude > 0 && _state.CanQueueAttack && !_state.Rolling)
         {
             //checks if going sideways
-            if (Mathf.Abs(_moveDir.y) < .5f)
+            if (Mathf.Abs(_state.MoveDir.y) < .5f)
             {
-                if (_moveDir.x > 0) _state.Dir = Direction.East;
+                if (_state.MoveDir.x > 0) _state.Dir = Direction.East;
                 else _state.Dir = Direction.West;
             }
 
             else
             {
-                if (_moveDir.y > 0) _state.Dir = Direction.North;
+                if (_state.MoveDir.y > 0) _state.Dir = Direction.North;
                 else _state.Dir = Direction.South;
             }
             _state.Moving = true;
@@ -81,9 +80,41 @@ public class PlayerMovement : MonoBehaviour
     {
         if (CheckForFreeSpace() && !_state.Attacking)
         {
-            transform.position += _moveDir * Time.deltaTime * _speed;
+            transform.position += _state.MoveDir * Time.deltaTime * _speed;
             return;
         }
+        else if (CheckForFreeSpace() && _state.Attacking)
+        {
+            transform.position += GetAttackMomentum() * Time.deltaTime * _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
+            return;
+        }
+    }
+
+    Vector3 GetAttackMomentum()
+    {
+        Vector3 l_momentum = Vector3.zero;
+
+        if (_state.MoveDir.sqrMagnitude != 0) l_momentum = _state.MoveDir;
+        else
+        {
+            switch (_state.Dir)
+            {
+                case Direction.North:
+                    l_momentum = Vector3.up;
+                    break;
+                case Direction.East:
+                    l_momentum = Vector3.right;
+                    break;
+                case Direction.South:
+                    l_momentum = Vector3.down;
+                    break;
+                case Direction.West:
+                    l_momentum = Vector3.left;
+                    break;
+            }
+        }
+
+        return l_momentum;
     }
 
     void OnRoomChanged(Vector3 p_newPos)
@@ -126,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         if (_state.Dir == Direction.South) l_usedThreshold = _southThreshold;
         else l_usedThreshold = _baseThreshold;
 
-        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _moveDir, Time.deltaTime * _speed + l_usedThreshold, _collideWith))
+        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _state.MoveDir, Time.deltaTime * _speed + l_usedThreshold, _collideWith))
         {
             if (item.transform.GetComponent<Collider2D>() && !item.transform.GetComponent<Collider2D>().isTrigger)
             {

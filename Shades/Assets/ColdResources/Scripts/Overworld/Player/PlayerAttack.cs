@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,8 +8,8 @@ public class PlayerAttack : MonoBehaviour
 {
     PlayerState _state;
     [SerializeField] int _maxCombo;
-    [SerializeField] float _slashTime;
-    [SerializeField] [Range(0f, 1f)] float _queueTimingProportion;
+
+    [SerializeField] List<PlayerAttackData> _comboList;
 
     [SerializeField] GameObject _NorthCol;
     [SerializeField] GameObject _SouthCol;
@@ -16,12 +18,18 @@ public class PlayerAttack : MonoBehaviour
 
     int _currentCombo = 0;
     bool _inputQueued = false;
-    bool _canQueueInput = true;
 
     private void Awake()
     {
         _state = GetComponent<PlayerState>();
+        InputHandler.AttackInput += Attack;
     }
+
+    private void OnDestroy()
+    {
+        InputHandler.AttackInput -= Attack;
+    }
+
     private void Update()
     {
         if (_inputQueued && !_state.Attacking && _currentCombo < _maxCombo)
@@ -35,26 +43,37 @@ public class PlayerAttack : MonoBehaviour
         }
 
     }
-    public void OnAttack(InputValue p_value)
+    public void Attack()
     {
-        if (_canQueueInput) _inputQueued = true;
+        if (_state.CanQueueAttack && !_state.Rolling) _inputQueued = true;
     }
 
     IEnumerator AttackRoutine()
     {
         _inputQueued = false;
         _state.Attacking = true;
-        _canQueueInput = false;
+        _state.AttackMomentumStrength = _comboList[_currentCombo].MomentumStrength;
+        _state.CanQueueAttack = false;
+        _state.AttackMomentumCurve = _comboList[_currentCombo].MomentumCurve;
 
-        _currentCombo++;
+        float l_startTime = Time.time;
+        while (l_startTime + (_comboList[_currentCombo].SlashTime * _comboList[_currentCombo].QueueTimingProportion) > Time.time)
+        {
+            yield return null;
+            _state.AttackProgression = Mathf.InverseLerp(l_startTime, l_startTime + _comboList[_currentCombo].SlashTime, Time.time);
+        }
 
-        yield return new WaitForSeconds(_slashTime * _queueTimingProportion);
         EnableDamageCol(true);
-        _canQueueInput = true;
+        _state.CanQueueAttack = true;
 
-        yield return new WaitForSeconds(_slashTime * (1f - _queueTimingProportion));
+        while (l_startTime + _comboList[_currentCombo].SlashTime > Time.time)
+        {
+            yield return null;
+            _state.AttackProgression = Mathf.InverseLerp(l_startTime, l_startTime + _comboList[_currentCombo].SlashTime, Time.time);
+        }
         EnableDamageCol(false);
         _state.Attacking = false;
+        _currentCombo++;
     }
 
     void EnableDamageCol(bool p_enable)
@@ -83,4 +102,14 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
+}
+
+[Serializable]
+public class PlayerAttackData
+{
+    public float SlashTime;
+    public float MomentumStrength;
+    [Range(0f, 1f)] public float QueueTimingProportion;
+    public AnimationCurve MomentumCurve;
+    public string AnimationName;
 }

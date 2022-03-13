@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "1540549e-ebc0-408e-bfc1-2348b32c6e93",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(max=1)",
                     "interactions": ""
                 },
                 {
@@ -193,7 +193,7 @@
                 {
                     "name": "",
                     "id": "3207f9c9-aafe-44a7-b6f1-12fc23750c82",
-                    "path": "<Gamepad>/leftStickPress",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
