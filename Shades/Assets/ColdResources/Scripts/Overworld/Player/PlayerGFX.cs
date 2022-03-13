@@ -5,6 +5,19 @@ using UnityEngine;
 public class PlayerGFX : MonoBehaviour
 {
     [SerializeField] Animator _animator;
+    string _lastAnim = HELENA_IDLE_SOUTH;
+
+    #region AnimNames
+    const string HELENA_IDLE_NORTH = "Helena_Idle_North";
+    const string HELENA_IDLE_SOUTH = "Helena_Idle_South";
+    const string HELENA_IDLE_EAST = "Helena_Idle_East";
+    const string HELENA_IDLE_WEST = "Helena_Idle_West";
+
+    const string HELENA_WALK_NORTH = "Helena_Walk_North";
+    const string HELENA_WALK_SOUTH = "Helena_Walk_South";
+    const string HELENA_WALK_EAST = "Helena_Walk_East";
+    const string HELENA_WALK_WEST = "Helena_Walk_West";
+    #endregion
 
     private void Awake()
     {
@@ -30,28 +43,30 @@ public class PlayerGFX : MonoBehaviour
     {
         _animator.SetBool("Moving", p_isMoving);
 
-        
         switch (p_dir)
         {
             case Direction.North:
-                _animator.SetFloat("XMovement", 0);
-                _animator.SetFloat("YMovement", 1);
-                break;
+                if (p_isMoving) PlayAnimation(HELENA_WALK_NORTH);
+                else PlayAnimation(HELENA_IDLE_NORTH);
+                    break;
             case Direction.East:
-                _animator.SetFloat("XMovement", 1);
-                _animator.SetFloat("YMovement", 0);
+                if (p_isMoving) PlayAnimation(HELENA_WALK_EAST);
+                else PlayAnimation(HELENA_IDLE_EAST);
                 break;
             case Direction.South:
-                _animator.SetFloat("XMovement", 0);
-                _animator.SetFloat("YMovement", -1);
+                if (p_isMoving) PlayAnimation(HELENA_WALK_SOUTH);
+                else PlayAnimation(HELENA_IDLE_SOUTH);
                 break;
             case Direction.West:
-                _animator.SetFloat("XMovement", -1);
-                _animator.SetFloat("YMovement", 0);
-                break;
-            default:
+                if (p_isMoving) PlayAnimation(HELENA_WALK_WEST);
+                else PlayAnimation(HELENA_IDLE_WEST);
                 break;
         }
-        
+    }
+
+    void PlayAnimation(string p_anim, bool p_checkPlaying = true)
+    {
+        if (p_checkPlaying && p_anim != _lastAnim) _animator.Play(p_anim);
+        _lastAnim = p_anim;
     }
 }
