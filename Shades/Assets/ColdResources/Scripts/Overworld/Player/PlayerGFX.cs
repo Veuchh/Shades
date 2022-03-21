@@ -14,6 +14,8 @@ public class PlayerGFX : MonoBehaviour
     const string HELENA_WALK = "Helena_Walk";
 
     const string HELENA_ATTACK = "Helena_Attack";
+
+    const string HELENA_ROLL = "Helena_Roll";
     #endregion
 
     private void Awake()
@@ -23,16 +25,12 @@ public class PlayerGFX : MonoBehaviour
 
     private void Update()
     {
-        if (!_state.Attacking)
-        {
-            PlayerOrientation();
-        }
-        else PlayDirectionalAnimation(HELENA_ATTACK);
-    }
+        if (_state.Rolling) PlayDirectionalAnimation(HELENA_ROLL);
 
-    void PlayerOrientation()
-    {
-        if (_state.Moving) PlayDirectionalAnimation(HELENA_WALK);
+        else if (_state.Attacking) PlayDirectionalAnimation(HELENA_ATTACK);
+
+        else if(_state.Moving) PlayDirectionalAnimation(HELENA_WALK);
+
         else PlayDirectionalAnimation(HELENA_IDLE);
     }
 

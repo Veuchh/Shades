@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (_inputQueued && !_state.Attacking && _currentCombo < _maxCombo)
+        if (_state.CanAttack() && _inputQueued && _currentCombo < _maxCombo)
         {
             StartCoroutine(AttackRoutine());
         }
@@ -41,8 +41,8 @@ public class PlayerAttack : MonoBehaviour
         {
             _currentCombo = 0;
         }
-
     }
+
     public void Attack()
     {
         if (_state.CanQueueAttack && !_state.Rolling) _inputQueued = true;
@@ -52,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _inputQueued = false;
         _state.Attacking = true;
+        _state.MomentumDir = _state.GetForwardDir();
         _state.AttackMomentumStrength = _comboList[_currentCombo].MomentumStrength;
         _state.CanQueueAttack = false;
         _state.AttackMomentumCurve = _comboList[_currentCombo].MomentumCurve;

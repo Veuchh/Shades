@@ -13,7 +13,13 @@ public class PlayerMovement : MonoBehaviour
     float _walkingSpeed = 50f;
     float _runningSpeed = 100f;
 
+    public float _rollSpeed = 85f;
+    float _rollDuration = .7f;
+
+    [SerializeField] AnimationCurve _rollSpeedCurve;
+
     [SerializeField] LayerMask _collideWith;
+    float rollProgress = 0;
 
     private void Awake()
     {
@@ -38,12 +44,14 @@ public class PlayerMovement : MonoBehaviour
     void SubscribeMovement()
     {
         InputHandler.MoveInput += Move;
+        InputHandler.RollInput += Roll;
         InputHandler.SprintInput += Sprint;
     }
 
     void UnsubscribeMovement()
     {
         InputHandler.MoveInput -= Move;
+        InputHandler.RollInput -= Roll;
         InputHandler.SprintInput -= Sprint;
     }
 
@@ -53,11 +61,27 @@ public class PlayerMovement : MonoBehaviour
         else _speed = _walkingSpeed;
     }
 
+    void Roll()
+    {
+        if (_state.CanRoll())
+        {
+            _state.MomentumDir = _state.GetForwardDir();
+            rollProgress = 0;
+            _state.Rolling = true;
+            Invoke("StopRoll", _rollDuration);
+        }
+    }
+
+    void StopRoll()
+    {
+        _state.Rolling = false;
+    }
+
     void Move(Vector2 p_inputDir)
     {
         _state.MoveDir = p_inputDir;
 
-        if (p_inputDir.sqrMagnitude > 0 && _state.CanQueueAttack && !_state.Rolling)
+        if (p_inputDir.sqrMagnitude > 0)
         {
             //checks if going sideways
             if (Mathf.Abs(_state.MoveDir.y) < .5f)
@@ -78,44 +102,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (CheckForFreeSpace() && !_state.Attacking)
+        if (CheckForFreeSpace() && !_state.Attacking && !_state.Rolling)
         {
             transform.position += _state.MoveDir * Time.deltaTime * _speed;
             return;
         }
         else if (CheckForFreeSpace() && _state.Attacking)
         {
-            transform.position += GetAttackMomentum() * Time.deltaTime * _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
+            transform.position += _state.MomentumDir * Time.deltaTime * _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
+            return;
+        }
+        else if (CheckForFreeSpace() && _state.Rolling)
+        {
+            rollProgress += Time.deltaTime;
+            transform.position += _state.MomentumDir * Time.deltaTime * _rollSpeedCurve.Evaluate(rollProgress) * _rollSpeed;
             return;
         }
     }
 
-    Vector3 GetAttackMomentum()
-    {
-        Vector3 l_momentum = Vector3.zero;
 
-        if (_state.MoveDir.sqrMagnitude != 0) l_momentum = _state.MoveDir;
-        else
-        {
-            switch (_state.Dir)
-            {
-                case Direction.North:
-                    l_momentum = Vector3.up;
-                    break;
-                case Direction.East:
-                    l_momentum = Vector3.right;
-                    break;
-                case Direction.South:
-                    l_momentum = Vector3.down;
-                    break;
-                case Direction.West:
-                    l_momentum = Vector3.left;
-                    break;
-            }
-        }
-
-        return l_momentum;
-    }
 
     void OnRoomChanged(Vector3 p_newPos)
     {

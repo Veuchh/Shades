@@ -7,10 +7,7 @@ public class InputHandler : MonoBehaviour
 {
     public static event Action<Vector2> MoveInput;
     public static event Action<bool> SprintInput;
-    public static event Action InteractInput;
-    public static event Action SkipInput;
-    public static event Action DodgeInput;
-    public static event Action AttackInput;
+    public static event Action InteractInput, RollInput, SkipInput, DodgeInput, AttackInput;
 
     void OnMove(InputValue p_value)
     {
@@ -35,6 +32,11 @@ public class InputHandler : MonoBehaviour
     void OnSkip(InputValue p_value)
     {
         SkipInput?.Invoke();
+    }
+
+    void OnRoll(InputValue p_value)
+    {
+        RollInput?.Invoke();
     }
 
     void OnAttack(InputValue p_value)

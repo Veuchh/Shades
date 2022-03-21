@@ -217,40 +217,52 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 2612811469284618379}
-    m_Position: {x: -280, y: 180, z: 0}
+    m_Position: {x: -240, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5599833978579776040}
-    m_Position: {x: -280, y: 140, z: 0}
+    m_Position: {x: -240, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6697103546686561178}
-    m_Position: {x: -280, y: 220, z: 0}
+    m_Position: {x: -240, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1660945399561883611}
-    m_Position: {x: -280, y: 260, z: 0}
+    m_Position: {x: -240, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8095110349883034511}
-    m_Position: {x: 20, y: 240, z: 0}
+    m_Position: {x: -240, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2264600366691732967}
-    m_Position: {x: 20, y: 280, z: 0}
+    m_Position: {x: -240, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1473963045448153932}
-    m_Position: {x: 20, y: 200, z: 0}
+    m_Position: {x: -240, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7233030599966940754}
-    m_Position: {x: 20, y: 160, z: 0}
+    m_Position: {x: -240, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5940522576238029450}
-    m_Position: {x: -100, y: 80, z: 0}
+    m_Position: {x: -240, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5661391622800129434}
-    m_Position: {x: -100, y: 40, z: 0}
+    m_Position: {x: -240, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5221821635032411689}
-    m_Position: {x: -100, y: 0, z: 0}
+    m_Position: {x: -240, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2511301538250225825}
-    m_Position: {x: -100, y: -40, z: 0}
+    m_Position: {x: -240, y: -80, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -3594076661184638104}
+    m_Position: {x: -240, y: -120, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2292969780951203442}
+    m_Position: {x: -240, y: -240, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2870873174431786984}
+    m_Position: {x: -240, y: -200, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 5831135795314653646}
+    m_Position: {x: -240, y: -160, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -261,6 +273,32 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 1040, y: 130, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 2264600366691732967}
+--- !u!1102 &-3594076661184638104
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Helena_Roll_East
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: dd5b8f96fb6503e459dcd6d5e4de2b29, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -404,6 +442,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &2292969780951203442
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Helena_Roll_North
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 7e9e73f15ed57f64f9efd237847684d5, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &2511301538250225825
 AnimatorState:
   serializedVersion: 6
@@ -456,6 +520,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &2870873174431786984
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Helena_Roll_South
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 483da514e408f6e43b481a81fca0dfa0, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &3405148578604882216
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -481,6 +571,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &5831135795314653646
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Helena_Roll_West
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 46894b68ba37f5740a35e4e33470219f, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &7233030599966940754
 AnimatorState:
   serializedVersion: 6
