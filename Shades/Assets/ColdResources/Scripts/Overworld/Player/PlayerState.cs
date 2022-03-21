@@ -18,6 +18,13 @@ public class PlayerState : MonoBehaviour
     [HideInInspector] public float RollSpeed = 85f;
     [HideInInspector] public float RollDuration = .7f;
     [HideInInspector] public bool AttackInputQueued = false;
+    [HideInInspector] public float CurrentSpeed;
+
+    bool CanMove()
+    {
+        if (Attacking || Rolling || Talking) return false;
+        else return true;
+    }
 
     public bool CanRoll()
     {

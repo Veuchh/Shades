@@ -73,6 +73,7 @@ public class PlayerAttack : MonoBehaviour
             _state.AttackProgression = Mathf.InverseLerp(l_startTime, l_startTime + _comboList[_currentCombo].SlashTime, Time.time);
         }
         EnableDamageCol(false);
+
         _state.Attacking = false;
         _currentCombo++;
     }

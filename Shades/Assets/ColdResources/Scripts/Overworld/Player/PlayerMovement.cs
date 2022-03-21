@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] LayerMask _collideWith;
     float _rollProgress = 0;
+    bool _refreshDir = false;
 
     private void Awake()
     {
@@ -80,43 +81,55 @@ public class PlayerMovement : MonoBehaviour
 
         if (p_inputDir.sqrMagnitude > 0)
         {
-            //checks if going sideways
-            if (Mathf.Abs(_state.MoveDir.y) < .5f)
-            {
-                if (_state.MoveDir.x > 0) _state.Dir = Direction.East;
-                else _state.Dir = Direction.West;
-            }
-
-            else
-            {
-                if (_state.MoveDir.y > 0) _state.Dir = Direction.North;
-                else _state.Dir = Direction.South;
-            }
+            _refreshDir = true;
             _state.Moving = true;
         }
-        else _state.Moving = false;
+        else
+        {
+            _refreshDir = false;
+            _state.Moving = false;
+        }
     }
 
     void Update()
     {
         if (CheckForFreeSpace() && !_state.Attacking && !_state.Rolling)
         {
+            if (_refreshDir) RefreshDir();
             transform.position += _state.MoveDir * Time.deltaTime * _speed;
+            _state.CurrentSpeed = _speed;
             return;
         }
         else if (CheckForFreeSpace() && _state.Attacking)
         {
+            _state.CurrentSpeed = _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
             transform.position += _state.MomentumDir * Time.deltaTime * _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
             return;
         }
         else if (CheckForFreeSpace() && _state.Rolling)
         {
+            _state.CurrentSpeed = _rollSpeedCurve.Evaluate(_rollProgress) * _state.RollSpeed;
             _rollProgress += Time.deltaTime;
             transform.position += _state.MomentumDir * Time.deltaTime * _rollSpeedCurve.Evaluate(_rollProgress) * _state.RollSpeed;
             return;
         }
     }
+    void RefreshDir()
+    {
+        //checks if going sideways
+        if (Mathf.Abs(_state.MoveDir.y) < .5f)
+        {
+            if (_state.MoveDir.x > 0) _state.Dir = Direction.East;
+            else _state.Dir = Direction.West;
+        }
 
+        else
+        {
+            if (_state.MoveDir.y > 0) _state.Dir = Direction.North;
+            else _state.Dir = Direction.South;
+        }
+        _refreshDir = false;
+    }
     void OnRoomChanged(Vector3 p_newPos)
     {
         StartCoroutine(ChangePosAfterFadeToBlack(p_newPos));
@@ -157,7 +170,9 @@ public class PlayerMovement : MonoBehaviour
         if (_state.Dir == Direction.South) l_usedThreshold = _southThreshold;
         else l_usedThreshold = _baseThreshold;
 
-        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _state.MoveDir, Time.deltaTime * _speed + l_usedThreshold, _collideWith))
+        float l_usedspeed;
+
+        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _state.MoveDir, Time.deltaTime * _state.CurrentSpeed + l_usedThreshold, _collideWith))
         {
             if (item.transform.GetComponent<Collider2D>() && !item.transform.GetComponent<Collider2D>().isTrigger)
             {
