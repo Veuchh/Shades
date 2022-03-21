@@ -6,7 +6,7 @@
             "id": "fcc08857-ce2b-4a2c-b5ba-07b38817e09a",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "LStick",
                     "type": "Value",
                     "id": "1540549e-ebc0-408e-bfc1-2348b32c6e93",
                     "expectedControlType": "Vector2",
@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Sprint",
+                    "name": "LB",
                     "type": "Value",
                     "id": "e977eb8c-d4e5-4b1f-994e-24f0f6df1268",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interact",
+                    "name": "A",
                     "type": "Button",
                     "id": "59e00d04-c56f-4491-83b7-2bfc5394ff11",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Skip",
+                    "name": "B",
                     "type": "Button",
                     "id": "a6dcd177-ae03-4a25-aab8-b376dcce2b22",
                     "expectedControlType": "Button",
@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack",
+                    "name": "X",
                     "type": "Button",
                     "id": "a8032b47-dceb-4b4b-9478-60116835609e",
                     "expectedControlType": "Button",
@@ -46,9 +46,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Roll",
+                    "name": "Y",
+                    "type": "Button",
+                    "id": "8ee3f332-bde7-46cc-8d3a-5a85590f7edb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RB",
                     "type": "Button",
                     "id": "511f247b-61e0-4d5e-823c-045a347d329b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RT",
+                    "type": "Button",
+                    "id": "e52d7677-9b9e-4ab3-aac5-cc0719f59d34",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -62,7 +78,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -73,7 +89,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -84,7 +100,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -95,7 +111,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -106,7 +122,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -117,7 +133,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -128,7 +144,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -139,7 +155,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -150,7 +166,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -161,7 +177,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -172,7 +188,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -183,7 +199,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Move",
+                    "action": "LStick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -194,7 +210,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "LB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -205,7 +221,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
+                    "action": "LB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -216,7 +232,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "A",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -227,7 +243,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "A",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -238,7 +254,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skip",
+                    "action": "B",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -249,7 +265,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skip",
+                    "action": "B",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -260,7 +276,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -271,7 +287,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -282,7 +298,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "716466c5-e544-46d1-bf2d-535a768e3f55",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88f0df02-adc3-445a-bea0-c09dece3a9d3",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Y",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

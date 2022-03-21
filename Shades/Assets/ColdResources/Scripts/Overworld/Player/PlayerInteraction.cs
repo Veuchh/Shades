@@ -26,12 +26,12 @@ public class PlayerInteraction : MonoBehaviour
 
     void SubscribeInteraction()
     {
-        InputHandler.InteractInput += OnInteracted;
+        InputHandler.AInput += OnInteracted;
     }
 
     void UnsubscribeInteraction()
     {
-        InputHandler.InteractInput -= OnInteracted;
+        InputHandler.AInput -= OnInteracted;
     }
 
     void OnInteracted()

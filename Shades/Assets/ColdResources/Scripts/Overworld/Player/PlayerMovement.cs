@@ -13,13 +13,10 @@ public class PlayerMovement : MonoBehaviour
     float _walkingSpeed = 50f;
     float _runningSpeed = 100f;
 
-    public float _rollSpeed = 85f;
-    float _rollDuration = .7f;
-
     [SerializeField] AnimationCurve _rollSpeedCurve;
 
     [SerializeField] LayerMask _collideWith;
-    float rollProgress = 0;
+    float _rollProgress = 0;
 
     private void Awake()
     {
@@ -43,16 +40,16 @@ public class PlayerMovement : MonoBehaviour
 
     void SubscribeMovement()
     {
-        InputHandler.MoveInput += Move;
-        InputHandler.RollInput += Roll;
-        InputHandler.SprintInput += Sprint;
+        InputHandler.LStickInput += Move;
+        InputHandler.RBInput += Roll;
+        InputHandler.LBInput += Sprint;
     }
 
     void UnsubscribeMovement()
     {
-        InputHandler.MoveInput -= Move;
-        InputHandler.RollInput -= Roll;
-        InputHandler.SprintInput -= Sprint;
+        InputHandler.LStickInput -= Move;
+        InputHandler.RBInput -= Roll;
+        InputHandler.LBInput -= Sprint;
     }
 
     void Sprint(bool p_sprinting)
@@ -66,9 +63,9 @@ public class PlayerMovement : MonoBehaviour
         if (_state.CanRoll())
         {
             _state.MomentumDir = _state.GetForwardDir();
-            rollProgress = 0;
+            _rollProgress = 0;
             _state.Rolling = true;
-            Invoke("StopRoll", _rollDuration);
+            Invoke("StopRoll", _state.RollDuration);
         }
     }
 
@@ -114,13 +111,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (CheckForFreeSpace() && _state.Rolling)
         {
-            rollProgress += Time.deltaTime;
-            transform.position += _state.MomentumDir * Time.deltaTime * _rollSpeedCurve.Evaluate(rollProgress) * _rollSpeed;
+            _rollProgress += Time.deltaTime;
+            transform.position += _state.MomentumDir * Time.deltaTime * _rollSpeedCurve.Evaluate(_rollProgress) * _state.RollSpeed;
             return;
         }
     }
-
-
 
     void OnRoomChanged(Vector3 p_newPos)
     {
@@ -172,7 +167,5 @@ public class PlayerMovement : MonoBehaviour
         return l_isSpaceFree;
     }
 }
-
-
 
 public enum Direction { North, East, South, West };

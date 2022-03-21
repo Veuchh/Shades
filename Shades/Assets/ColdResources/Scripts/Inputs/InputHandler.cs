@@ -5,47 +5,52 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-    public static event Action<Vector2> MoveInput;
-    public static event Action<bool> SprintInput;
-    public static event Action InteractInput, RollInput, SkipInput, DodgeInput, AttackInput;
+    public static event Action<Vector2> LStickInput;
+    public static event Action<bool> LBInput, RTInput;
+    public static event Action AInput, RBInput, BInput, XInput;
 
-    void OnMove(InputValue p_value)
+    void OnLStick(InputValue p_value)
     {
-        MoveInput?.Invoke(p_value.Get<Vector2>().normalized);
+        LStickInput?.Invoke(p_value.Get<Vector2>().normalized);
     }
 
-    void OnSprint(InputValue p_value)
+    void OnLB(InputValue p_value)
     {
         bool l_sprinting;
 
         if (p_value.Get<float>() > .5f) l_sprinting = true;
         else l_sprinting = false;
 
-        SprintInput?.Invoke(l_sprinting);
+        LBInput?.Invoke(l_sprinting);
     }
 
-    void OnInteract(InputValue p_value)
+    void OnRT(InputValue p_value)
     {
-        InteractInput?.Invoke();
+        bool l_pressed;
+
+        if (p_value.Get<float>() > .5f) l_pressed = true;
+        else l_pressed = false;
+        Debug.Log(l_pressed);
+        RTInput?.Invoke(l_pressed);
     }
 
-    void OnSkip(InputValue p_value)
+    void OnA(InputValue p_value)
     {
-        SkipInput?.Invoke();
+        AInput?.Invoke();
     }
 
-    void OnRoll(InputValue p_value)
+    void OnB(InputValue p_value)
     {
-        RollInput?.Invoke();
+        BInput?.Invoke();
     }
 
-    void OnAttack(InputValue p_value)
+    void OnRB(InputValue p_value)
     {
-        AttackInput?.Invoke();
+        RBInput?.Invoke();
     }
 
-    void OnDodge(InputValue p_value)
+    void OnX(InputValue p_value)
     {
-
+        XInput?.Invoke();
     }
 }

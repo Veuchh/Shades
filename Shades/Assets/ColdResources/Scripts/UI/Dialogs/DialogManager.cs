@@ -40,12 +40,12 @@ public class DialogManager : MonoBehaviour
         else DialogManager.Instance = this;
 
         InteractableElement.TextInteractionCallback += OnTextInteraction;
-        InputHandler.MoveInput += OnMenuMove;
+        InputHandler.LStickInput += OnMenuMove;
     }
 
     private void OnDestroy()
     {
-        InputHandler.MoveInput -= OnMenuMove;
+        InputHandler.LStickInput -= OnMenuMove;
         InteractableElement.TextInteractionCallback -= OnTextInteraction;
     }
 
@@ -77,8 +77,8 @@ public class DialogManager : MonoBehaviour
 
         _callback = p_callback;
 
-        InputHandler.InteractInput += OnPlayerPressedInteract;
-        InputHandler.SkipInput += OnPlayerPressedSkip;
+        InputHandler.AInput += OnPlayerPressedInteract;
+        InputHandler.BInput += OnPlayerPressedSkip;
 
         foreach (DialogBoxContent l_content in p_contents)
         {
@@ -93,8 +93,8 @@ public class DialogManager : MonoBehaviour
         //if this is the last box
         if (_contentToDisplay.Count == 0 && !_isDialogDisplaying)
         {
-            InputHandler.InteractInput -= OnPlayerPressedInteract;
-            InputHandler.SkipInput -= OnPlayerPressedSkip;
+            InputHandler.AInput -= OnPlayerPressedInteract;
+            InputHandler.BInput -= OnPlayerPressedSkip;
             DialogEnded?.Invoke();
             _dialogPannel.SetActive(false);
             if (_hasChoice)

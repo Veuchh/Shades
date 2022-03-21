@@ -15,6 +15,9 @@ public class PlayerState : MonoBehaviour
     [HideInInspector] public float AttackProgression = 0;
     [HideInInspector] public bool CanQueueAttack = true;
     [HideInInspector] public AnimationCurve AttackMomentumCurve;
+    [HideInInspector] public float RollSpeed = 85f;
+    [HideInInspector] public float RollDuration = .7f;
+    [HideInInspector] public bool AttackInputQueued = false;
 
     public bool CanRoll()
     {
@@ -24,7 +27,7 @@ public class PlayerState : MonoBehaviour
 
     public bool CanAttack()
     {
-        if (Rolling || Talking || Attacking) return false;
+        if ((Rolling || Talking) || (Attacking && AttackInputQueued)) return false;
         else return true;
     }
 

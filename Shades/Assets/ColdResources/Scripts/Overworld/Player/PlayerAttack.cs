@@ -17,22 +17,22 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject _WestCol;
 
     int _currentCombo = 0;
-    bool _inputQueued = false;
+    
 
     private void Awake()
     {
         _state = GetComponent<PlayerState>();
-        InputHandler.AttackInput += Attack;
+        InputHandler.XInput += Attack;
     }
 
     private void OnDestroy()
     {
-        InputHandler.AttackInput -= Attack;
+        InputHandler.XInput -= Attack;
     }
 
     private void Update()
     {
-        if (_state.CanAttack() && _inputQueued && _currentCombo < _maxCombo)
+        if (_state.CanAttack() && _state.AttackInputQueued && _currentCombo < _maxCombo)
         {
             StartCoroutine(AttackRoutine());
         }
@@ -45,12 +45,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
     {
-        if (_state.CanQueueAttack && !_state.Rolling) _inputQueued = true;
+        if (_state.CanQueueAttack && !_state.Rolling) _state.AttackInputQueued = true;
     }
 
     IEnumerator AttackRoutine()
     {
-        _inputQueued = false;
+        _state.AttackInputQueued = false;
         _state.Attacking = true;
         _state.MomentumDir = _state.GetForwardDir();
         _state.AttackMomentumStrength = _comboList[_currentCombo].MomentumStrength;
