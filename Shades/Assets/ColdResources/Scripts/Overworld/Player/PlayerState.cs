@@ -9,8 +9,8 @@ public class PlayerState : MonoBehaviour
     [HideInInspector] public bool Attacking = false;
     [HideInInspector] public bool Rolling = false;
     [HideInInspector] public bool Talking = false;
-    [HideInInspector] public Vector3 MoveDir;
-    [HideInInspector] public Vector3 MomentumDir;
+    [HideInInspector] public Vector3 CurrentMoveDir;
+    [HideInInspector] public Vector3 MoveInput;
     [HideInInspector] public float AttackMomentumStrength = 10;
     [HideInInspector] public float AttackProgression = 0;
     [HideInInspector] public bool CanQueueAttack = true;
@@ -20,7 +20,7 @@ public class PlayerState : MonoBehaviour
     [HideInInspector] public bool AttackInputQueued = false;
     [HideInInspector] public float CurrentSpeed;
 
-    bool CanMove()
+    public bool CanMove()
     {
         if (Attacking || Rolling || Talking) return false;
         else return true;
@@ -42,7 +42,7 @@ public class PlayerState : MonoBehaviour
     {
         Vector3 l_momentum = Vector3.zero;
 
-        if (MoveDir.sqrMagnitude != 0) l_momentum = MoveDir;
+        if (MoveInput.sqrMagnitude != 0) l_momentum = MoveInput;
         else
         {
             switch (Dir)

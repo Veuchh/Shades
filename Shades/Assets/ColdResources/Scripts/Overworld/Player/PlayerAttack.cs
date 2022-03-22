@@ -52,7 +52,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _state.AttackInputQueued = false;
         _state.Attacking = true;
-        _state.MomentumDir = _state.GetForwardDir();
+        _state.CurrentMoveDir = _state.GetForwardDir();
         _state.AttackMomentumStrength = _comboList[_currentCombo].MomentumStrength;
         _state.CanQueueAttack = false;
         _state.AttackMomentumCurve = _comboList[_currentCombo].MomentumCurve;

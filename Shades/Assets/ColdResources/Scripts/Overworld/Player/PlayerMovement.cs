@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerState _state;
 
     float _baseThreshold = 10f;
-    float _southThreshold = 4f;
+    float _southThreshold = 6f;
 
     float _speed;
 
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_state.CanRoll())
         {
-            _state.MomentumDir = _state.GetForwardDir();
+            _state.CurrentMoveDir = _state.GetForwardDir();
             _rollProgress = 0;
             _state.Rolling = true;
             Invoke("StopRoll", _state.RollDuration);
@@ -77,8 +77,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(Vector2 p_inputDir)
     {
-        _state.MoveDir = p_inputDir;
-
+        _state.MoveInput = p_inputDir;
+        if (_state.CanMove())
+        {
+            _state.CurrentMoveDir = p_inputDir;
+        }
         if (p_inputDir.sqrMagnitude > 0)
         {
             _refreshDir = true;
@@ -96,36 +99,34 @@ public class PlayerMovement : MonoBehaviour
         if (CheckForFreeSpace() && !_state.Attacking && !_state.Rolling)
         {
             if (_refreshDir) RefreshDir();
-            transform.position += _state.MoveDir * Time.deltaTime * _speed;
+            transform.position += _state.MoveInput * Time.deltaTime * _speed;
             _state.CurrentSpeed = _speed;
             return;
         }
         else if (CheckForFreeSpace() && _state.Attacking)
         {
-            _state.CurrentSpeed = _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
-            transform.position += _state.MomentumDir * Time.deltaTime * _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
+            transform.position += _state.CurrentMoveDir * Time.deltaTime * _state.AttackMomentumCurve.Evaluate(_state.AttackProgression) * _state.AttackMomentumStrength;
             return;
         }
         else if (CheckForFreeSpace() && _state.Rolling)
         {
-            _state.CurrentSpeed = _rollSpeedCurve.Evaluate(_rollProgress) * _state.RollSpeed;
             _rollProgress += Time.deltaTime;
-            transform.position += _state.MomentumDir * Time.deltaTime * _rollSpeedCurve.Evaluate(_rollProgress) * _state.RollSpeed;
+            transform.position += _state.CurrentMoveDir * Time.deltaTime * _rollSpeedCurve.Evaluate(_rollProgress) * _state.RollSpeed;
             return;
         }
     }
     void RefreshDir()
     {
         //checks if going sideways
-        if (Mathf.Abs(_state.MoveDir.y) < .5f)
+        if (Mathf.Abs(_state.MoveInput.y) < .5f)
         {
-            if (_state.MoveDir.x > 0) _state.Dir = Direction.East;
+            if (_state.MoveInput.x > 0) _state.Dir = Direction.East;
             else _state.Dir = Direction.West;
         }
 
         else
         {
-            if (_state.MoveDir.y > 0) _state.Dir = Direction.North;
+            if (_state.MoveInput.y > 0) _state.Dir = Direction.North;
             else _state.Dir = Direction.South;
         }
         _refreshDir = false;
@@ -170,9 +171,8 @@ public class PlayerMovement : MonoBehaviour
         if (_state.Dir == Direction.South) l_usedThreshold = _southThreshold;
         else l_usedThreshold = _baseThreshold;
 
-        float l_usedspeed;
 
-        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .1f, _state.MoveDir, Time.deltaTime * _state.CurrentSpeed + l_usedThreshold, _collideWith))
+        foreach (var item in Physics2D.CircleCastAll(transform.position + p_offset, .2f, _state.CurrentMoveDir, Time.deltaTime * _state.CurrentSpeed + l_usedThreshold, _collideWith))
         {
             if (item.transform.GetComponent<Collider2D>() && !item.transform.GetComponent<Collider2D>().isTrigger)
             {
